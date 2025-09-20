@@ -1,0 +1,1678 @@
+﻿<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>انجام پروژه دانشگاهی و علمی | مؤسسۀ پژوهشی دکتر دیدگر</title>
+  <meta name="description" content="پشتیبانی کامل پروژه‌های دانشگاهی: پروپوزال، تحلیل داده، نگارش و ویرایش علمی با تضمین اصالت. مشاورهٔ رایگان.">
+
+  <!--
+    ==========================
+    CSS اصلاحی برای دکمه تلگرام
+    ==========================
+    این استایلها باید قادر باشند بیشتر قوانین دیگر را override کنند.
+    اگر در فایل شما لینک به CSS های خارجی (مثلاً tailwind.css یا fontawesome.css) وجود دارد،
+    مطمئن شو این بلوک قبل از بسته شدن </head> قرار دارد (یعنی بعد از لینک‌ها یا فایل‌های CSS خارجی).
+  -->
+  <style>
+    /* هدف: همهٔ محتوای داخل لینک .telegram-button سفید و کاملاً خوانا باشد */
+    html body a.telegram-button,
+    html body a.telegram-button * {
+      color: #ffffff !important;
+      opacity: 1 !important;
+      text-shadow: none !important;
+      -webkit-text-fill-color: #ffffff !important; /* برای برخی مرورگرها و فونت آیکن */
+    }
+
+    /* اگر از svg استفاده شده */
+    html body a.telegram-button svg,
+    html body a.telegram-button svg path,
+    html body a.telegram-button svg g {
+      fill: #ffffff !important;
+      stroke: #ffffff !important;
+      opacity: 1 !important;
+    }
+
+    /* بعضی فونت‌آیکن‌ها از ::before استفاده می‌کنند */
+    html body a.telegram-button::before,
+    html body a.telegram-button *::before {
+      color: #ffffff !important;
+      -webkit-text-fill-color: #ffffff !important;
+    }
+
+    /* حفظ رنگ در حالت‌های interaction */
+    html body a.telegram-button:hover,
+    html body a.telegram-button:focus,
+    html body a.telegram-button:visited,
+    html body a.telegram-button *:hover,
+    html body a.telegram-button *:focus {
+      color: #ffffff !important;
+      opacity: 1 !important;
+      -webkit-text-fill-color: #ffffff !important;
+    }
+
+    /* در صورتی که بخواهی یک کلاس کوچک برای تست دستی داشته باشی */
+    .telegram-button-force {
+      color: #ffffff !important;
+    }
+  </style>
+
+  <!--
+    اسکریپت پشتیبان: پس از بارگذاری صفحه، رنگ/opacity را به صورت inline نیز اعمال می‌کند.
+    این تضمین می‌کند حتی اگر استایل‌های خارجی بعداً مقادیر را بازنویسی کنند،
+    این اسکریپت پس از بارگذاری اجرا و مقداردهی می‌کند.
+  -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      try {
+        // انتخاب همه لینک‌های دارای کلاس telegram-button یا لینک‌هایی که href شامل t.me است
+        var nodes = document.querySelectorAll('a.telegram-button, a[href*="t.me"]');
+        nodes.forEach(function (a) {
+          // اعمال به خودِ لینک
+          a.style.color = '#ffffff';
+          a.style.opacity = '1';
+          a.style.setProperty('color', '#ffffff', 'important');
+          a.style.setProperty('opacity', '1', 'important');
+
+          // روی تمام فرزندان هم اعمال کن (آیکن <i>، span، svg و ...)
+          a.querySelectorAll('*').forEach(function (ch) {
+            ch.style.color = '#ffffff';
+            ch.style.opacity = '1';
+            ch.style.setProperty('color', '#ffffff', 'important');
+            ch.style.setProperty('opacity', '1', 'important');
+            // در صورت svg داخل ch
+            if (ch.tagName.toLowerCase() === 'svg') {
+              ch.style.setProperty('fill', '#ffffff', 'important');
+              // و تلاش برای همه path داخل svg
+              ch.querySelectorAll('path').forEach(function(p){ p.style.fill = '#ffffff'; p.style.setProperty('fill','#ffffff','important'); });
+            }
+          });
+        });
+      } catch (e) {
+        // اگر خطایی بود مشکلی ایجاد نشود — فقط ignore کن
+        console.warn('telegram-button color script error:', e);
+      }
+    });
+  </script>
+</head>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .font-persian { font-family: 'Vazirmatn', sans-serif; }
+        .font-english { font-family: 'Inter', sans-serif; }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .luxury-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .floating-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .pulse-glow {
+            animation: pulse-glow 2s infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(102, 126, 234, 0.4); }
+            50% { box-shadow: 0 0 40px rgba(102, 126, 234, 0.8); }
+        }
+        
+        .slide-in-right {
+            animation: slideInRight 1s ease-out;
+        }
+        
+        .slide-in-left {
+            animation: slideInLeft 1s ease-out;
+        }
+        
+        @keyframes slideInRight {
+            from { transform: translateX(100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes slideInLeft {
+            from { transform: translateX(-100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        .hover-scale {
+            transition: all 0.3s ease;
+        }
+        
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .luxury-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .luxury-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .luxury-button:hover::before {
+            left: 100%;
+        }
+        
+        .service-icon {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .step-number {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+        
+        .contact-button {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.4);
+        }
+        
+        .telegram-button {
+            background: linear-gradient(135deg, #0088cc 0%, #005577 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .telegram-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(0, 136, 204, 0.4);
+        }
+        
+        .lang-switch {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .lang-switch:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .hidden { display: none; }
+        
+        .rtl { direction: rtl; }
+        .ltr { direction: ltr; }
+        
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .stats-counter {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #667eea;
+        }
+        
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+    
+        .font-arabic { font-family: 'Cairo', 'Noto Naskh Arabic', sans-serif; }
+
+/* Responsive: move language buttons below header on small screens */
+@media (max-width: 640px) {
+  .lang-switcher {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    margin-top: 1rem;
+    display: flex !important;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  /* ensure hero content has some top padding so buttons don't overlap visual space */
+  .gradient-bg .container.mx-auto {
+    padding-top: 1rem;
+  }
+}
+
+
+/* Ensure header/title sits lower on small screens for readability */
+@media (max-width: 640px) {
+  .gradient-bg h1 {
+    margin-top: 2.2rem;
+  }
+  .gradient-bg .container.mx-auto {
+    padding-top: 0.75rem;
+  }
+}
+
+
+/* custom: lower hero title slightly for improved visibility */
+.gradient-bg .hero-title { margin-top: 2rem; }
+
+
+/* custom: improved responsive styles for slogan and description */
+.hero-slogan { 
+  font-size: 2rem;
+  margin-top: 1.5rem;
+  font-weight: 700;
+  color: var(--hero-slogan-color); /* accessible blue */
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .hero-slogan { font-size: 1.5rem; margin-top: 1rem; }
+}
+.hero-description {
+  font-size: 1.125rem;
+  margin-top: 0.75rem;
+  line-height: 1.8;
+  max-width: 800px;
+  margin-left:auto;
+  margin-right:auto;
+  text-align: justify;
+  color: #333;
+  padding: 0 1rem;
+}
+@media (max-width: 768px) {
+  .hero-description { font-size: 1rem; line-height: 1.6; }
+}
+
+/* custom: accessible, responsive styles for hero slogan and description */
+:root {
+  --telegram-color: #1E90FF;
+  --hero-slogan-color: #ffb6c1; /* deep blue - good contrast on light backgrounds */
+  --hero-slogan-color-on-dark: #ffffff; /* fallback if hero area is dark */
+  --hero-max-width: 820px;
+}
+
+/* Ensure hero container uses readable text color if background is dark */
+.gradient-bg, .hero, .hero-section { color: inherit; }
+
+.hero-title { margin-top: 2rem; line-height: 1.05; }
+
+/* Slogan styling */
+.hero-slogan {
+  color: var(--hero-slogan-color);
+  font-size: 1.6rem; /* desktop */
+  font-weight: 700;
+  margin-top: 1rem;
+  margin-bottom: 0.4rem;
+  text-align: center;
+  letter-spacing: 0.2px;
+  line-height: 1.15;
+}
+
+/* Description text */
+.hero-description {
+  font-size: 1rem;
+  line-height: 1.9;
+  max-width: var(--hero-max-width);
+  margin: 0.25rem auto 1.25rem auto;
+  padding: 0 1.25rem;
+  text-align: center;
+  color: inherit;
+}
+
+/* If the hero background is dark (detect class .dark or .bg-dark), switch slogan color to white */
+.gradient-bg.bg-dark .hero-slogan,
+.hero.bg-dark .hero-slogan {
+  color: var(--hero-slogan-color-on-dark);
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .hero-slogan { font-size: 1.4rem; }
+  .hero-description { font-size: 0.98rem; padding: 0 1rem; }
+  .hero-title { margin-top: 1.6rem; }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .hero-slogan { font-size: 1.25rem; }
+  .hero-description { font-size: 0.95rem; line-height: 1.8; padding: 0 0.9rem; max-width: 92%; }
+  .hero-title { margin-top: 1.2rem; font-size: 1.6rem; }
+}
+
+/* Ensure buttons and nearby elements don't overlap */
+.hero .actions, .hero .cta { margin-top: 0.9rem; }
+
+</style>
+
+<link rel="canonical" href="https://dr17.vercel.app/">
+<link rel="alternate" hreflang="fa" href="https://dr17.vercel.app/">
+<link rel="alternate" hreflang="ar" href="https://dr17.vercel.app/ar">
+<link rel="alternate" hreflang="en" href="https://dr17.vercel.app/en">
+<meta property="og:title" content="مؤسسۀ پژوهشی دکتر دیدگر — انجام پروژه دانشگاهی و علمی">
+<meta property="og:description" content="پشتیبانی کامل پروژه‌های دانشگاهی: پروپوزال، تحلیل داده، نگارش و ویرایش علمی با تضمین اصالت.">
+<meta property="og:url" content="https://dr17.vercel.app/">
+<meta property="og:locale" content="fa_IR">
+<meta name="twitter:card" content="summary_large_image">
+
+
+<style>
+.telegram-button {
+    background: linear-gradient(135deg, var(--telegram-color) 0%, #38bdf8 100%);
+    transition: all 0.3s ease;
+    color: white !important;
+}
+.telegram-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(56, 189, 248, 0.25);
+}
+.footer-telegram, a[href*="t.me"] {
+    color: var(--telegram-color) !important;
+    transition: color 0.2s ease;
+}
+.footer-telegram:hover, a[href*="t.me"]:hover { color: #61c9f2 !important; }
+.hero-slogan, .hero-slogan * { color: var(--hero-slogan-color) !important; }
+</style>
+
+
+
+
+
+
+<!-- assistant-insert: top-gap-ultimate-fix -->
+<style id="assistant-top-gap-ultimate-fix">
+/* Defensive fix for white strip at very top:
+   - Remove default margins/padding on root
+   - Prevent margin collapsing by creating a new BFC for the hero (.gradient-bg)
+   - Respect iOS safe-area inset if present
+   - Provide the same gradient on html as an extra fallback so any tiny gap shows the correct background */
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 100% !important;
+  box-sizing: border-box !important;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+}
+.gradient-bg {
+  display: flow-root !important;
+  box-sizing: border-box !important;
+  padding-top: env(safe-area-inset-top, 0px) !important;
+  padding-top: constant(safe-area-inset-top, 0px) !important;
+}
+</style>
+<!-- end assistant-insert -->
+
+
+<!-- user-photo-top-circle-style -->
+<style id="user-photo-top-circle-style">
+#user-photo-top-insert { display:flex; justify-content:center; align-items:center; padding:18px 12px 22px; }
+#user-photo-top-insert figure { width: 220px; max-width: 40vw; margin: 0; }
+#user-photo-top-insert img { width:100%; height:100%; aspect-ratio:1/1; object-fit:cover; border-radius:50%; display:block; box-shadow:0 10px 30px rgba(0,0,0,0.18); }
+@media (max-width:640px) { #user-photo-top-insert figure { width:160px; max-width:54vw; } }
+</style>
+
+</head>
+<body class="font-persian">
+    <!-- Language Switcher -->
+    <div class="fixed top-4 left-4 z-50 flex gap-2 lang-switcher">
+        <button onclick="switchLanguage('fa')" class="lang-switch px-4 py-2 rounded-full text-white text-sm font-medium" id="fa-btn">فارسی</button>
+        <button onclick="switchLanguage('ar')" class="lang-switch px-4 py-2 rounded-full text-white text-sm font-medium" id="ar-btn">العربية</button>
+        <button onclick="switchLanguage('en')" class="lang-switch px-4 py-2 rounded-full text-white text-sm font-medium" id="en-btn">English</button>
+    </div>
+
+    
+<!-- user-photo-top-insert: start -->
+<div id="user-photo-top-insert" aria-hidden="false" role="img" aria-label="تصویر مؤسس">
+  <figure>
+    <img src="./0J2A6748.JPG" alt="تصویر مؤسس" />
+  </figure>
+</div>
+<!-- user-photo-top-insert: end -->
+
+<!-- Persian Content -->
+    <div id="fa-content" class="rtl">
+        <!-- Hero Section -->
+        <section class="gradient-bg min-h-screen flex items-center justify-center relative overflow-hidden">
+            <!-- Floating Elements -->
+            <div class="absolute top-20 right-20 w-20 h-20 bg-white bg-opacity-10 rounded-full floating-animation"></div>
+            <div class="absolute bottom-32 left-32 w-16 h-16 bg-white bg-opacity-10 rounded-full floating-animation" style="animation-delay: -2s;"></div>
+            <div class="absolute top-1/2 left-20 w-12 h-12 bg-white bg-opacity-10 rounded-full floating-animation" style="animation-delay: -4s;"></div>
+            
+            <div class="container mx-auto px-6 text-center text-white relative z-10">
+                <div class="slide-in-right">
+                    <h1 class="hero-title text-6xl md:text-8xl font-bold mb-6 leading-tight">
+                        <span class="text-yellow-300">مؤسسۀ پژوهشی</span> دکتر دیدگر
+                    </h1>
+<h2 class="hero-slogan">دیدگر مشاورِ برتر</h2>
+<p class="hero-description"><span class="desc-short">
+مؤسسۀ پژوهشی دکتر دیدگر، همراهی مطمئن برای دانشجویان و پژوهشگران است که با تبدیل ایده‌ها به پروژه‌ها و دستاوردهای علمیِ مستند و قابل دفاع در محیط‌های دانشگاهی، فرایند پژوهش را تسهیل می‌کند.
+</span>
+<span id="more-desc" class="hidden" style="display:none;">
+تیم ما از مرحلهٔ طراحی تا تحویل نهایی، همواره در کنار شما خواهد بود و کلیه خدمات را با دقت، شفافیت و رعایت کامل اصول اخلاق پژوهش ارائه می‌دهد. این مؤسسه در حوزه‌های گوناگون علمی از جمله مهندسی، علوم پایه، علوم انسانی، پزشکی و مدیریت فعالیت دارد و خدمات جامعی همچون طراحی پروپوزال، تحلیل داده‌ها، نگارش علمی و ویرایش تخصصی را به پژوهشگران ارائه می‌کند.
+</span>
+</p>
+<button id="read-more-btn" onclick="toggleReadMore(this)" class="luxury-button px-6 py-2 rounded-full mt-2 mb-4 text-white font-bold">بیشتر بخوانید</button>
+
+                    
+                    <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                        <a href="https://wa.me/989124067596" target="_blank" rel="noopener noreferrer" class="contact-button px-12 py-4 rounded-full text-white font-bold text-lg hover-scale flex items-center gap-3" aria-label="ارتباط در واتساپ">
+                            <i class="fab fa-whatsapp text-2xl" aria-hidden="true"></i>
+                            ارتباط در واتساپ
+                        </a>
+                        <a href="https://t.me/bestprojeh" target="_blank" rel="noopener noreferrer" class="telegram-button px-12 py-4 rounded-full text-white font-bold text-lg hover-scale flex items-center gap-3" aria-label="ارتباط در تلگرام">
+                            <i class="fab fa-telegram text-2xl" aria-hidden="true"></i>
+                            ارتباط در تلگرام
+                        </a>
+                    </div>
+                    <!-- Quick contact form (non-intrusive) -->
+                    
+                    <p class="text-sm text-white opacity-80 mt-2">از طریق واتساپ/تلگرام با ما در تماس باشید — پاسخ در کمتر از ۲۴ ساعت.</p>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 slide-in-left">
+                    <h2 class="text-5xl font-bold text-gradient mb-6">خدماتِ تخصصی مؤسسۀ پژوهشی دکتر دیدگر</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        مجموعه کاملی از خدمات علمی و پژوهشی برای موفقیت پروژه‌های دانشگاهی شما در تمام مقاطع تحصیلی از کارشناسی تا دکتری
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="luxury-card rounded-3xl p-8 hover-scale border-r-4 border-blue-500">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-lightbulb text-3xl text-blue-600" aria-hidden="true"></i>
+                            </div>
+                            <button onclick="toggleDetails('proposal-fa', this)" aria-controls="proposal-fa" aria-expanded="false" class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm hover:bg-blue-600 transition-colors">
+                                اطلاعات بیشتر
+                            </button>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800">طراحی و تدوین پروپوزال</h3>
+                        <p class="text-gray-600 leading-relaxed mb-4">تعیین سوال و هدف پژوهش با رویکرد علمی و نوآورانه، شناسایی خلأ پژوهشی و تدوین چارچوب نظری مناسب</p>
+                        <div id="proposal-fa" class="hidden bg-blue-50 p-4 rounded-lg text-sm text-gray-700">
+                            <strong>شامل خدمات:</strong><br>
+                            • تعریف دقیق مسئله و اهمیت پژوهش<br>
+                            • بررسی جامع ادبیات و شناسایی خلأ پژوهشی<br>
+                            • تدوین اهداف کلی و جزئی با رویکرد SMART<br>
+                            • طراحی سوالات و فرضیه‌های پژوهشی<br>
+                            • تعیین روش‌شناسی مناسب (کمی، کیفی، آمیخته)<br>
+                            • برنامه‌ریزی زمانی دقیق و تخمین بودجه<br>
+                            • تدوین چارچوب نظری و مفهومی
+                        </div>
+                    </div>
+                    
+                    <div class="luxury-card rounded-3xl p-8 hover-scale border-r-4 border-green-500">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-chart-line text-3xl text-green-600" aria-hidden="true"></i>
+                            </div>
+                            <button onclick="toggleDetails('analysis-fa', this)" aria-controls="analysis-fa" aria-expanded="false" class="bg-green-500 text-white px-3 py-1 rounded-full text-sm hover:bg-green-600 transition-colors">
+                                اطلاعات بیشتر
+                            </button>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800">تحلیل آماری و مدل‌سازی پیشرفته</h3>
+                        <p class="text-gray-600 leading-relaxed mb-4">تحلیل داده‌ها با نرم‌افزارهای تخصصی SPSS, R, Python, Stata, MATLAB و ارائه گزارش‌های تفصیلی</p>
+                        <div id="analysis-fa" class="hidden bg-green-50 p-4 rounded-lg text-sm text-gray-700">
+                            <strong>خدمات تحلیلی شامل:</strong><br>
+                            • آمار توصیفی و استنباطی پیشرفته<br>
+                            • تحلیل رگرسیون (خطی، لجستیک، چندگانه، چندسطحی)<br>
+                            • تحلیل واریانس (ANOVA, MANOVA, ANCOVA)<br>
+                            • تحلیل عاملی (اکتشافی و تأیدی) و خوشه‌بندی<br>
+                            • مدل‌سازی معادلات ساختاری (SEM) با AMOS و Lisrel<br>
+                            • تحلیل سری زمانی، پیش‌بینی و تحلیل بقا<br>
+                            • تحلیل‌های غیرپارامتریک و روش‌های بوت استرپ<br>
+                            • تحلیل داده‌های کیفی با نرم‌افزار NVivo
+                        </div>
+                    </div>
+                    
+                    <div class="luxury-card rounded-3xl p-8 hover-scale border-r-4 border-purple-500">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-code text-3xl text-purple-600" aria-hidden="true"></i>
+                            </div>
+                            <button onclick="toggleDetails('coding-fa', this)" aria-controls="coding-fa" aria-expanded="false" class="bg-purple-500 text-white px-3 py-1 rounded-full text-sm hover:bg-purple-600 transition-colors">
+                                اطلاعات بیشتر
+                            </button>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800">پیاده‌سازی کد و شبیه‌سازی</h3>
+                        <p class="text-gray-600 leading-relaxed mb-4">توسعه الگوریتم‌ها، شبیه‌سازی سیستم‌ها و پروژه‌های برنامه‌نویسی تخصصی در حوزه‌های مختلف</p>
+                        <div id="coding-fa" class="hidden bg-purple-50 p-4 rounded-lg text-sm text-gray-700">
+                            <strong>زبان‌ها و ابزارهای برنامه‌نویسی:</strong><br>
+                            • Python (NumPy, Pandas, Scikit-learn, TensorFlow)<br>
+                            • MATLAB/Simulink برای شبیه‌سازی سیستم‌ها<br>
+                            • R و RStudio برای تحلیل‌های آماری پیشرفته<br>
+                            • C++, Java, JavaScript برای پروژه‌های نرم‌افزاری<br>
+                            • شبیه‌سازی سیستم‌های پیچیده و مدل‌سازی ریاضی<br>
+                            • الگوریتم‌های هوش مصنوعی و یادگیری ماشین<br>
+                            • توسعه اپلیکیشن‌های وب و موبایل<br>
+                            • پردازش تصویر و بینایی کامپیوتر
+                        </div>
+                    </div>
+                    
+                    <div class="luxury-card rounded-3xl p-8 hover-scale border-r-4 border-orange-500">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-pen-fancy text-3xl text-orange-600" aria-hidden="true"></i>
+                            </div>
+                            <button onclick="toggleDetails('writing-fa', this)" aria-controls="writing-fa" aria-expanded="false" class="bg-orange-500 text-white px-3 py-1 rounded-full text-sm hover:bg-orange-600 transition-colors">
+                                اطلاعات بیشتر
+                            </button>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800">نگارش علمی و تألیف</h3>
+                        <p class="text-gray-600 leading-relaxed mb-4">نگارش فصول پایان‌نامه، گزارش‌های نهایی، مقالات علمی و کتب تخصصی با رعایت استانداردهای بین‌المللی</p>
+                        <div id="writing-fa" class="hidden bg-orange-50 p-4 rounded-lg text-sm text-gray-700">
+                            <strong>انواع نگارش علمی:</strong><br>
+                            • فصل مقدمه، بیان مسئله و اهمیت پژوهش<br>
+                            • مرور جامع ادبیات و پیشینه پژوهش<br>
+                            • روش‌شناسی پژوهش و طراحی مطالعه<br>
+                            • تحلیل یافته‌ها، نتایج و بحث<br>
+                            • نتیجه‌گیری، پیشنهادات و محدودیت‌ها<br>
+                            • چکیده فارسی و انگلیسی با کلیدواژه‌ها<br>
+                            • نگارش مقالات ISI و علمی-پژوهشی<br>
+                            • تألیف کتب درسی و مرجع تخصصی
+                        </div>
+                    </div>
+                    
+                    <div class="luxury-card rounded-3xl p-8 hover-scale border-r-4 border-red-500">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-edit text-3xl text-red-600" aria-hidden="true"></i>
+                            </div>
+                            <button onclick="toggleDetails('editing-fa', this)" aria-controls="editing-fa" aria-expanded="false" class="bg-red-500 text-white px-3 py-1 rounded-full text-sm hover:bg-red-600 transition-colors">
+                                اطلاعات بیشتر
+                            </button>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800">ویرایش و قالب‌بندی تخصصی</h3>
+                        <p class="text-gray-600 leading-relaxed mb-4">ویرایش محتوایی، زبانی و قالب‌بندی طبق استانداردهای APA, IEEE, Harvard و سایر سبک‌های معتبر</p>
+                        <div id="editing-fa" class="hidden bg-red-50 p-4 rounded-lg text-sm text-gray-700">
+                            <strong>خدمات ویرایش شامل:</strong><br>
+                            • ویرایش محتوایی و ساختاری متون<br>
+                            • ویرایش زبانی، دستوری و املایی<br>
+                            • قالب‌بندی طبق استانداردهای دانشگاه<br>
+                            • ارجاع‌دهی صحیح منابع و فهرست مراجع<br>
+                            • تنظیم فهرست مطالب، جداول و نمودارها<br>
+                            • آماده‌سازی برای چاپ و ارائه<br>
+                            • ترجمه تخصصی انگلیسی به فارسی و بالعکس<br>
+                            • بازنویسی و بهبود کیفیت متن
+                        </div>
+                    </div>
+                    
+                    <div class="luxury-card rounded-3xl p-8 hover-scale border-r-4 border-teal-500">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-shield-alt text-3xl text-teal-600" aria-hidden="true"></i>
+                            </div>
+                            <button onclick="toggleDetails('originality-fa', this)" aria-controls="originality-fa" aria-expanded="false" class="bg-teal-500 text-white px-3 py-1 rounded-full text-sm hover:bg-teal-600 transition-colors">
+                                اطلاعات بیشتر
+                            </button>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800">تضمین اصالت و کیفیت</h3>
+                        <p class="text-gray-600 leading-relaxed mb-4">بررسی اصالت با نرم‌افزارهای معتبر، گزارش‌های تفصیلی و پشتیبانی مستمر پس از تحویل</p>
+                        <div id="originality-fa" class="hidden bg-teal-50 p-4 rounded-lg text-sm text-gray-700">
+                            <strong>تضمین‌های مؤسسۀ پژوهشی دکتر دیدگر:</strong><br>
+                            • بررسی اصالت با Turnitin، iThenticate و سایر نرم‌افزارها<br>
+                            • گزارش کامل Plagiarism Check با درصد دقیق<br>
+                            • تضمین کیفیت و اصالت ۱۰۰٪ محتوا<br>
+                            • پشتیبانی ۳ ماهه رایگان پس از تحویل<br>
+                            • اصلاحات و بازنگری رایگان در صورت نیاز<br>
+                            • محرمانگی کامل اطلاعات و پروژه‌ها<br>
+                            • ضمانت بازگشت وجه در صورت عدم رضایت<br>
+                            • مشاوره رایگان در تمام مراحل پروژه
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section class="py-20 gradient-bg">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl font-bold text-white mb-6">روند کاریِ شفاف و مرحله‌ای</h2>
+                    <p class="text-xl text-white opacity-90 max-w-3xl mx-auto">
+                        فرآیند حرفه‌ای و قابل اعتماد مؤسسۀ پژوهشی دکتر دیدگر برای تضمین کیفیت و موفقیت پروژه شما
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
+                    <div class="text-center">
+                        <div class="step-number mx-auto mb-6">۱</div>
+                        <h3 class="text-xl font-bold text-white mb-4">مشاورهٔ رایگان</h3>
+                        <p class="text-white opacity-80">نیازسنجی دقیق، تعیین مقطع تحصیلی و بررسی ضرب‌الزمان پروژه</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="step-number mx-auto mb-6">۲</div>
+                        <h3 class="text-xl font-bold text-white mb-4">پیشنهاد فنی</h3>
+                        <p class="text-white opacity-80">ارائه جدول زمان‌بندی تفصیلی و پیش‌فاکتور شفاف</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="step-number mx-auto mb-6">۳</div>
+                        <h3 class="text-xl font-bold text-white mb-4">اجرای مرحله‌ای</h3>
+                        <p class="text-white opacity-80">انجام پروژه به صورت مرحله‌ای با گزارش‌های میان‌دوره</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="step-number mx-auto mb-6">۴</div>
+                        <h3 class="text-xl font-bold text-white mb-4">بازبینی و کنترل</h3>
+                        <p class="text-white opacity-80">کنترل کیفیت توسط تیم متخصص و بررسی اصالت</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="step-number mx-auto mb-6">۵</div>
+                        <h3 class="text-xl font-bold text-white mb-4">تحویل نهایی</h3>
+                        <p class="text-white opacity-80">ارائه فایل‌های قابل ویرایش، PDF و گزارش اصالت</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl font-bold text-gradient mb-6">چرا مؤسسۀ پژوهشی دکتر دیدگر؟</h2>
+                    <p class="text-xl text-gray-600 max-w-4xl mx-auto">
+                        با بیش از یک دهه تجربه در حوزه پژوهش و آموزش، ما بهترین کیفیت خدمات علمی را ارائه می‌دهیم
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="slide-in-left">
+                        <div class="luxury-card rounded-3xl p-8">
+                            <h3 class="text-3xl font-bold mb-6 text-gray-800">تجربه و تخصص بالا</h3>
+                            <ul class="space-y-4 text-lg text-gray-600">
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-check-circle text-green-500 mt-1" aria-hidden="true"></i>
+                                    تیمی متشکل از فارغ التحصیلان دکتری با سوابق پژوهشی معتبر
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-check-circle text-green-500 mt-1" aria-hidden="true"></i>
+                                    تجربهٔ همکاری با دانشگاه‌ها و مراکز تحقیقاتی
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-check-circle text-green-500 mt-1" aria-hidden="true"></i>
+                                    تعهد کامل به شفافیت و اصولِ اخلاق پژوهش
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-check-circle text-green-500 mt-1" aria-hidden="true"></i>
+                                    تخصص در حوزه‌های مختلف علمی و فنی
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="slide-in-right">
+                        <div class="luxury-card rounded-3xl p-8">
+                            <h3 class="text-3xl font-bold mb-6 text-gray-800">تضمین کیفیت و رضایت</h3>
+                            <ul class="space-y-4 text-lg text-gray-600">
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-star text-yellow-500 mt-1" aria-hidden="true"></i>
+                                    گزارش‌های مرحله‌ای و شفاف از پیشرفت کار
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-star text-yellow-500 mt-1" aria-hidden="true"></i>
+                                    نمونه‌کارهای منتخب و معتبر در پورتفولیو
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-star text-yellow-500 mt-1" aria-hidden="true"></i>
+                                    خروجی نهایی آمادهٔ دفاع و انتشار
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-star text-yellow-500 mt-1" aria-hidden="true"></i>
+                                    پشتیبانی مستمر و مشاوره رایگان
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-20 gradient-bg">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-5xl font-bold text-white mb-8">آمادهٔ شروع همکاری هستید؟</h2>
+                <p class="text-2xl text-white opacity-90 mb-12 max-w-3xl mx-auto">
+                    همین الآن موضوع پروژه و مهلت زمانی خود را ارسال کنید — ظرف ۲۴ ساعت برنامهٔ کاری تفصیلی و پیش‌فاکتور شفاف دریافت خواهید کرد
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                    <a href="https://wa.me/989124067596" target="_blank" rel="noopener noreferrer" class="contact-button px-16 py-6 rounded-full text-white font-bold text-xl hover-scale flex items-center gap-4 pulse-glow">
+                        <i class="fab fa-whatsapp text-3xl" aria-hidden="true"></i>
+                        شروع مشاورهٔ رایگان
+                    </a>
+                    <a href="https://t.me/bestprojeh" target="_blank" rel="noopener noreferrer" class="telegram-button px-16 py-6 rounded-full text-white font-bold text-xl hover-scale flex items-center gap-4">
+                        <i class="fab fa-telegram text-3xl" aria-hidden="true"></i>
+                        ارتباط سریع
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Arabic Content -->
+    <div id="ar-content" class="hidden rtl font-arabic">
+        <!-- Hero Section -->
+        <section class="gradient-bg min-h-screen flex items-center justify-center relative overflow-hidden">
+            <div class="absolute top-20 right-20 w-20 h-20 bg-white bg-opacity-10 rounded-full floating-animation"></div>
+            <div class="absolute bottom-32 left-32 w-16 h-16 bg-white bg-opacity-10 rounded-full floating-animation" style="animation-delay: -2s;"></div>
+            <div class="absolute top-1/2 left-20 w-12 h-12 bg-white bg-opacity-10 rounded-full floating-animation" style="animation-delay: -4s;"></div>
+            
+            <div class="container mx-auto px-6 text-center text-white relative z-10">
+                <div class="slide-in-right">
+                    <h1 class="hero-title text-6xl md:text-8xl font-bold mb-6 leading-tight">
+                        <span class="text-yellow-300">مؤسَّسة الدكتور ديدگر</span> البحثية
+                    </h1>
+                    <p class="text-2xl md:text-3xl mb-8 font-light leading-relaxed">
+                        خبراء إنجاز المشاريع الأكاديمية والعلمية
+                    </p>
+                    <p class="text-lg md:text-xl mb-12 max-w-4xl mx-auto leading-relaxed opacity-90">
+                        مؤسسةُ الدكتور ديدگر البحثية شريكٌ موثوق للطلبة والباحثين؛ إذ تُسهّل مسارَ البحث من خلال تحويلِ الأفكار إلى مشاريعٍ وإنجازاتٍ علمية موثَّقة وقابلةٍ للدفاع في الأوساط الأكاديمية. يرافقُكم فريقُنا دائماً منذ مرحلةِ التصميم وحتى التسليمِ النهائي، ويُقدِّمُ كافةَ الخدماتِ بدقّةٍ وشفافيةٍ مع الالتزامِ التامّ بمبادئِ أخلاقياتِ البحثِ العلمي. تعملُ المؤسسةُ في مجالاتٍ علميةٍ متنوعةٍ، بما في ذلك الهندسة والعلومِ الأساسية والعلومِ الإنسانية والطبّ والإدارة، وتُقدِّمُ خدماتٍ شاملةً مثل إعدادِ مقترحاتِ البحث (بروبوزال)، تحليلِ البيانات، الكتابةَ العلميةَ والتحريرَ المتخصِّصَ للباحثين.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                        <a href="https://wa.me/989124067596" target="_blank" rel="noopener noreferrer" class="contact-button px-12 py-4 rounded-full text-white font-bold text-lg hover-scale flex items-center gap-3" aria-label="ارتباط در واتساپ">
+                            <i class="fab fa-whatsapp text-2xl" aria-hidden="true"></i>
+                            التواصل في واتساب
+                        </a>
+                        <a href="https://t.me/bestprojeh" target="_blank" rel="noopener noreferrer" class="telegram-button px-12 py-4 rounded-full text-white font-bold text-lg hover-scale flex items-center gap-3" aria-label="ارتباط در تلگرام">
+                            <i class="fab fa-telegram text-2xl" aria-hidden="true"></i>
+                            التواصل في تيليجرام
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 slide-in-left">
+                    <h2 class="text-5xl font-bold text-gradient mb-6">خدمات مؤسَّسة الدكتور ديدگر البحثية المتخصصة</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        مجموعة شاملة من الخدمات العلمية والبحثية لنجاح مشاريعكم الجامعية في جميع المراحل الدراسية من البكالوريوس إلى الدكتوراه
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="luxury-card rounded-3xl p-8 hover-scale border-r-4 border-blue-500">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-lightbulb text-3xl text-blue-600" aria-hidden="true"></i>
+                            </div>
+                            <button onclick="toggleDetails('proposal-ar', this)" aria-controls="proposal-ar" aria-expanded="false" class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm hover:bg-blue-600 transition-colors">
+                                تفاصيل أكثر
+                            </button>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800">تصميم وإعداد مقترح البحث</h3>
+                        <p class="text-gray-600 leading-relaxed mb-4">تحديد الأسئلة والأهداف البحثية بنهج علمي ومبتكر، وتحديد الفجوة البحثية وصياغة الإطار النظري المناسب</p>
+                        <div id="proposal-ar" class="hidden bg-blue-50 p-4 rounded-lg text-sm text-gray-700">
+                            <strong>يشمل الخدمات:</strong><br>
+                            • تعريف دقيق للمشكلة وأهمية البحث<br>
+                            • مراجعة شاملة للأدبيات وتحديد الفجوة البحثية<br>
+                            • صياغة الأهداف العامة والتفصيلية بمنهج SMART<br>
+                            • تصميم الأسئلة والفرضيات البحثية<br>
+                            • تحديد المنهجية المناسبة (كمية، نوعية، مختلطة)<br>
+                            • التخطيط الزمني الدقيق وتقدير الميزانية<br>
+                            • صياغة الإطار النظري والمفاهيمي
+                        </div>
+                    </div>
+                    
+                    <div class="luxury-card rounded-3xl p-8 hover-scale border-r-4 border-green-500">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-chart-line text-3xl text-green-600" aria-hidden="true"></i>
+                            </div>
+                            <button onclick="toggleDetails('analysis-ar', this)" aria-controls="analysis-ar" aria-expanded="false" class="bg-green-500 text-white px-3 py-1 rounded-full text-sm hover:bg-green-600 transition-colors">
+                                تفاصيل أكثر
+                            </button>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800">التحليل الإحصائي والنمذجة المتقدمة</h3>
+                        <p class="text-gray-600 leading-relaxed mb-4">تحليل البيانات بالبرامج المتخصصة SPSS, R, Python, Stata, MATLAB وتقديم التقارير التفصيلية</p>
+                        <div id="analysis-ar" class="hidden bg-green-50 p-4 rounded-lg text-sm text-gray-700">
+                            <strong>الخدمات التحليلية تشمل:</strong><br>
+                            • الإحصاء الوصفي والاستنتاجي المتقدم<br>
+                            • تحليل الانحدار (خطي، لوجستي، متعدد، متعدد المستويات)<br>
+                            • تحليل التباين (ANOVA, MANOVA, ANCOVA)<br>
+                            • التحليل العاملي (استكشافي وتأكيدي) والتجميع<br>
+                            • نمذجة المعادلات الهيكلية (SEM) باستخدام AMOS و Lisrel<br>
+                            • تحليل السلاسل الزمنية والتنبؤ وتحليل البقاء<br>
+                            • التحليلات غير المعلمية وطرق البوت ستراب<br>
+                            • تحليل البيانات النوعية ببرنامج NVivo
+                        </div>
+                    </div>
+                    
+                    <div class="luxury-card rounded-3xl p-8 hover-scale border-r-4 border-purple-500">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-code text-3xl text-purple-600" aria-hidden="true"></i>
+                            </div>
+                            <button onclick="toggleDetails('coding-ar', this)" aria-controls="coding-ar" aria-expanded="false" class="bg-purple-500 text-white px-3 py-1 rounded-full text-sm hover:bg-purple-600 transition-colors">
+                                تفاصيل أكثر
+                            </button>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800">تنفيذ الأكواد والمحاكاة</h3>
+                        <p class="text-gray-600 leading-relaxed mb-4">تطوير الخوارزميات ومحاكاة الأنظمة والمشاريع البرمجية المتخصصة في مختلف المجالات</p>
+                        <div id="coding-ar" class="hidden bg-purple-50 p-4 rounded-lg text-sm text-gray-700">
+                            <strong>لغات وأدوات البرمجة:</strong><br>
+                            • Python (NumPy, Pandas, Scikit-learn, TensorFlow)<br>
+                            • MATLAB/Simulink لمحاكاة الأنظمة<br>
+                            • R و RStudio للتحليلات الإحصائية المتقدمة<br>
+                            • C++, Java, JavaScript للمشاريع البرمجية<br>
+                            • محاكاة الأنظمة المعقدة والنمذجة الرياضية<br>
+                            • خوارزميات الذكاء الاصطناعي والتعلم الآلي<br>
+                            • تطوير تطبيقات الويب والهاتف المحمول<br>
+                            • معالجة الصور والرؤية الحاسوبية
+                        </div>
+                    </div>
+                    
+                    <div class="luxury-card rounded-3xl p-8 hover-scale border-r-4 border-orange-500">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-pen-fancy text-3xl text-orange-600" aria-hidden="true"></i>
+                            </div>
+                            <button onclick="toggleDetails('writing-ar', this)" aria-controls="writing-ar" aria-expanded="false" class="bg-orange-500 text-white px-3 py-1 rounded-full text-sm hover:bg-orange-600 transition-colors">
+                                تفاصيل أكثر
+                            </button>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800">الكتابة العلمية والتأليف</h3>
+                        <p class="text-gray-600 leading-relaxed mb-4">كتابة فصول الأطروحة والتقارير النهائية والمقالات العلمية والكتب المتخصصة وفق المعايير الدولية</p>
+                        <div id="writing-ar" class="hidden bg-orange-50 p-4 rounded-lg text-sm text-gray-700">
+                            <strong>أنواع الكتابة العلمية:</strong><br>
+                            • فصل المقدمة وبيان المشكلة وأهمية البحث<br>
+                            • المراجعة الشاملة للأدبيات وخلفية البحث<br>
+                            • منهجية البحث وتصميم الدراسة<br>
+                            • تحليل النتائج والمناقشة<br>
+                            • الخلاصة والتوصيات والقيود<br>
+                            • الملخص بالعربية والإنجليزية مع الكلمات المفتاحية<br>
+                            • كتابة المقالات العلمية المحكمة وISI<br>
+                            • تأليف الكتب الدراسية والمراجع المتخصصة
+                        </div>
+                    </div>
+                    
+                    <div class="luxury-card rounded-3xl p-8 hover-scale border-r-4 border-red-500">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-edit text-3xl text-red-600" aria-hidden="true"></i>
+                            </div>
+                            <button onclick="toggleDetails('editing-ar', this)" aria-controls="editing-ar" aria-expanded="false" class="bg-red-500 text-white px-3 py-1 rounded-full text-sm hover:bg-red-600 transition-colors">
+                                تفاصيل أكثر
+                            </button>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800">التحرير والتنسيق المتخصص</h3>
+                        <p class="text-gray-600 leading-relaxed mb-4">التحرير المحتوائي واللغوي والتنسيق وفق معايير APA, IEEE, Harvard وغيرها من الأنماط المعتمدة</p>
+                        <div id="editing-ar" class="hidden bg-red-50 p-4 rounded-lg text-sm text-gray-700">
+                            <strong>خدمات التحرير تشمل:</strong><br>
+                            • التحرير المحتوائي والهيكلي للنصوص<br>
+                            • التحرير اللغوي والنحوي والإملائي<br>
+                            • التنسيق وفق معايير الجامعة<br>
+                            • الاقتباس الصحيح للمراجع وقائمة المصادر<br>
+                            • تنسيق فهرس المحتويات والجداول والرسوم<br>
+                            • الإعداد للطباعة والعرض<br>
+                            • الترجمة المتخصصة من الإنجليزية إلى العربية والعكس<br>
+                            • إعادة الكتابة وتحسين جودة النص
+                        </div>
+                    </div>
+                    
+                    <div class="luxury-card rounded-3xl p-8 hover-scale border-r-4 border-teal-500">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-shield-alt text-3xl text-teal-600" aria-hidden="true"></i>
+                            </div>
+                            <button onclick="toggleDetails('originality-ar', this)" aria-controls="originality-ar" aria-expanded="false" class="bg-teal-500 text-white px-3 py-1 rounded-full text-sm hover:bg-teal-600 transition-colors">
+                                تفاصيل أكثر
+                            </button>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800">ضمان الأصالة والجودة</h3>
+                        <p class="text-gray-600 leading-relaxed mb-4">فحص الأصالة بالبرامج المعتمدة والتقارير التفصيلية والدعم المستمر بعد التسليم</p>
+                        <div id="originality-ar" class="hidden bg-teal-50 p-4 rounded-lg text-sm text-gray-700">
+                            <strong>ضمانات مؤسَّسة الدكتور ديدگر البحثية:</strong><br>
+                            • فحص الأصالة بـ Turnitin و iThenticate وبرامج أخرى<br>
+                            • تقرير شامل لفحص الانتحال بنسبة دقيقة<br>
+                            • ضمان جودة وأصالة المحتوى ١٠٠٪<br>
+                            • دعم مجاني لمدة ٣ أشهر بعد التسليم<br>
+                            • تعديلات ومراجعات مجانية عند الحاجة<br>
+                            • سرية تامة للمعلومات والمشاريع<br>
+                            • ضمان استرداد المبلغ في حالة عدم الرضا<br>
+                            • استشارة مجانية في جميع مراحل المشروع
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section class="py-20 gradient-bg">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl font-bold text-white mb-6">سير العمل الشفاف والمرحلي</h2>
+                    <p class="text-xl text-white opacity-90 max-w-3xl mx-auto">
+                        العملية المهنية والموثوقة لمؤسَّسة الدكتور ديدگر البحثية لضمان جودة ونجاح مشروعكم
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
+                    <div class="text-center">
+                        <div class="step-number mx-auto mb-6">١</div>
+                        <h3 class="text-xl font-bold text-white mb-4">استشارة مجانية</h3>
+                        <p class="text-white opacity-80">تقييم دقيق للاحتياجات وتحديد المرحلة الدراسية ومراجعة الموعد النهائي</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="step-number mx-auto mb-6">٢</div>
+                        <h3 class="text-xl font-bold text-white mb-4">الاقتراح الفني</h3>
+                        <p class="text-white opacity-80">تقديم جدول زمني تفصيلي وعرض أسعار شفاف</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="step-number mx-auto mb-6">٣</div>
+                        <h3 class="text-xl font-bold text-white mb-4">التنفيذ المرحلي</h3>
+                        <p class="text-white opacity-80">إنجاز المشروع بشكل مرحلي مع تقارير دورية</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="step-number mx-auto mb-6">٤</div>
+                        <h3 class="text-xl font-bold text-white mb-4">المراجعة والمراقبة</h3>
+                        <p class="text-white opacity-80">مراقبة الجودة من قبل فريق متخصص وفحص الأصالة</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="step-number mx-auto mb-6">٥</div>
+                        <h3 class="text-xl font-bold text-white mb-4">التسليم النهائي</h3>
+                        <p class="text-white opacity-80">تقديم الملفات القابلة للتحرير وPDF وتقرير الأصالة</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl font-bold text-gradient mb-6">لماذا مؤسَّسة الدكتور ديدگر البحثية؟</h2>
+                    <p class="text-xl text-gray-600 max-w-4xl mx-auto">
+                        بخبرة تزيد عن عقد من الزمن في مجال البحث والتعليم، نقدم أفضل جودة للخدمات العلمية
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="slide-in-left">
+                        <div class="luxury-card rounded-3xl p-8">
+                            <h3 class="text-3xl font-bold mb-6 text-gray-800">الخبرة والتخصص العالي</h3>
+                            <ul class="space-y-4 text-lg text-gray-600">
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-check-circle text-green-500 mt-1" aria-hidden="true"></i>
+                                    فريق مكوَّن من خريجي الدكتوراه ذوي خلفيات بحثية موثوقة
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-check-circle text-green-500 mt-1" aria-hidden="true"></i>
+                                    خبرة في التعاون مع الجامعات ومراكز البحوث
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-check-circle text-green-500 mt-1" aria-hidden="true"></i>
+                                    التزام كامل بالشفافية وأخلاقيات البحث
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-check-circle text-green-500 mt-1" aria-hidden="true"></i>
+                                    تخصص في مختلف المجالات العلمية والتقنية
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="slide-in-right">
+                        <div class="luxury-card rounded-3xl p-8">
+                            <h3 class="text-3xl font-bold mb-6 text-gray-800">ضمان الجودة والرضا</h3>
+                            <ul class="space-y-4 text-lg text-gray-600">
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-star text-yellow-500 mt-1" aria-hidden="true"></i>
+                                    تقارير مرحلية وشفافة عن تقدم العمل
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-star text-yellow-500 mt-1" aria-hidden="true"></i>
+                                    نماذج أعمال منتقاة ومعتمدة في المحفظة
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-star text-yellow-500 mt-1" aria-hidden="true"></i>
+                                    مخرجات نهائية جاهزة للدفاع والنشر
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-star text-yellow-500 mt-1" aria-hidden="true"></i>
+                                    دعم مستمر واستشارة مجانية
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-20 gradient-bg">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-5xl font-bold text-white mb-8">مستعدون لبدء التعاون؟</h2>
+                <p class="text-2xl text-white opacity-90 mb-12 max-w-3xl mx-auto">
+                    أرسل موضوع مشروعك والموعد النهائي الآن — ستحصل على خطة عمل تفصيلية وعرض أسعار شفاف خلال ٢٤ ساعة
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                    <a href="https://wa.me/989124067596" target="_blank" rel="noopener noreferrer" class="contact-button px-16 py-6 rounded-full text-white font-bold text-xl hover-scale flex items-center gap-4 pulse-glow">
+                        <i class="fab fa-whatsapp text-3xl" aria-hidden="true"></i>
+                        بدء الاستشارة المجانية
+                    </a>
+                    <a href="https://t.me/bestprojeh" target="_blank" rel="noopener noreferrer" class="telegram-button px-16 py-6 rounded-full text-white font-bold text-xl hover-scale flex items-center gap-4">
+                        <i class="fab fa-telegram text-3xl" aria-hidden="true"></i>
+                        التواصل السريع
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- English Content -->
+    <div id="en-content" class="hidden ltr font-english">
+        <!-- Hero Section -->
+        <section class="gradient-bg min-h-screen flex items-center justify-center relative overflow-hidden">
+            <div class="absolute top-20 left-20 w-20 h-20 bg-white bg-opacity-10 rounded-full floating-animation"></div>
+            <div class="absolute bottom-32 right-32 w-16 h-16 bg-white bg-opacity-10 rounded-full floating-animation" style="animation-delay: -2s;"></div>
+            <div class="absolute top-1/2 right-20 w-12 h-12 bg-white bg-opacity-10 rounded-full floating-animation" style="animation-delay: -4s;"></div>
+            
+            <div class="container mx-auto px-6 text-center text-white relative z-10">
+                <div class="slide-in-left">
+                    <h1 class="hero-title text-6xl md:text-8xl font-bold mb-6 leading-tight">
+                        <span class="text-yellow-300">Dr. Didgar</span> Research Institute
+                    </h1>
+                    <p class="text-2xl md:text-3xl mb-8 font-light leading-relaxed">
+                        Academic & Scientific Project Specialists
+                    </p>
+                    <p class="text-lg md:text-xl mb-12 max-w-4xl mx-auto leading-relaxed opacity-90">
+                        Dr. Didgar Research Institute is a trusted partner for students and researchers, facilitating the research process by transforming ideas into projects and documented, defensible scientific achievements within academic settings. Our team supports you from the design phase through final delivery, providing all services with precision, transparency, and full adherence to the principles of research ethics. The institute operates across a range of scientific fields—including engineering, the basic sciences, the humanities, medicine, and management—and offers comprehensive services to researchers such as proposal design, data analysis, scientific writing, and specialized editing.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                        <a href="https://wa.me/989124067596" target="_blank" rel="noopener noreferrer" class="contact-button px-12 py-4 rounded-full text-white font-bold text-lg hover-scale flex items-center gap-3" aria-label="ارتباط در واتساپ">
+                            <i class="fab fa-whatsapp text-2xl" aria-hidden="true"></i>
+                            Connect on WhatsApp
+                        </a>
+                        <a href="https://t.me/bestprojeh" target="_blank" rel="noopener noreferrer" class="telegram-button px-12 py-4 rounded-full text-white font-bold text-lg hover-scale flex items-center gap-3" aria-label="ارتباط در تلگرام">
+                            <i class="fab fa-telegram text-2xl" aria-hidden="true"></i>
+                            Connect on Telegram
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 slide-in-right">
+                    <h2 class="text-5xl font-bold text-gradient mb-6">Dr. Didgar Research Institute Specialized Services</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Comprehensive scientific and research services for the success of your academic projects across all educational levels from bachelor's to doctoral degrees
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="luxury-card rounded-3xl p-8 hover-scale border-l-4 border-blue-500">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-lightbulb text-3xl text-blue-600" aria-hidden="true"></i>
+                            </div>
+                            <button onclick="toggleDetails('proposal-en', this)" aria-controls="proposal-en" aria-expanded="false" class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm hover:bg-blue-600 transition-colors">
+                                More Details
+                            </button>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800">Proposal Design & Development</h3>
+                        <p class="text-gray-600 leading-relaxed mb-4">Research question formulation with scientific and innovative approach, identifying research gaps and developing appropriate theoretical frameworks</p>
+                        <div id="proposal-en" class="hidden bg-blue-50 p-4 rounded-lg text-sm text-gray-700">
+                            <strong>Services Include:</strong><br>
+                            • Precise problem definition and research significance<br>
+                            • Comprehensive literature review and gap identification<br>
+                            • SMART approach for general and specific objectives<br>
+                            • Research questions and hypotheses design<br>
+                            • Appropriate methodology selection (quantitative, qualitative, mixed)<br>
+                            • Detailed timeline planning and budget estimation<br>
+                            • Theoretical and conceptual framework development
+                        </div>
+                    </div>
+                    
+                    <div class="luxury-card rounded-3xl p-8 hover-scale border-l-4 border-green-500">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-chart-line text-3xl text-green-600" aria-hidden="true"></i>
+                            </div>
+                            <button onclick="toggleDetails('analysis-en', this)" aria-controls="analysis-en" aria-expanded="false" class="bg-green-500 text-white px-3 py-1 rounded-full text-sm hover:bg-green-600 transition-colors">
+                                More Details
+                            </button>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800">Advanced Statistical Analysis & Modeling</h3>
+                        <p class="text-gray-600 leading-relaxed mb-4">Data analysis using specialized software SPSS, R, Python, Stata, MATLAB with detailed reporting</p>
+                        <div id="analysis-en" class="hidden bg-green-50 p-4 rounded-lg text-sm text-gray-700">
+                            <strong>Analytical Services Include:</strong><br>
+                            • Advanced descriptive and inferential statistics<br>
+                            • Regression analysis (linear, logistic, multiple, multilevel)<br>
+                            • Analysis of variance (ANOVA, MANOVA, ANCOVA)<br>
+                            • Factor analysis (exploratory & confirmatory) and clustering<br>
+                            • Structural equation modeling (SEM) with AMOS & Lisrel<br>
+                            • Time series analysis, forecasting, and survival analysis<br>
+                            • Non-parametric analyses and bootstrap methods<br>
+                            • Qualitative data analysis using NVivo software
+                        </div>
+                    </div>
+                    
+                    <div class="luxury-card rounded-3xl p-8 hover-scale border-l-4 border-purple-500">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-code text-3xl text-purple-600" aria-hidden="true"></i>
+                            </div>
+                            <button onclick="toggleDetails('coding-en', this)" aria-controls="coding-en" aria-expanded="false" class="bg-purple-500 text-white px-3 py-1 rounded-full text-sm hover:bg-purple-600 transition-colors">
+                                More Details
+                            </button>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800">Code Implementation & Simulation</h3>
+                        <p class="text-gray-600 leading-relaxed mb-4">Algorithm development, system simulation, and specialized programming projects across various domains</p>
+                        <div id="coding-en" class="hidden bg-purple-50 p-4 rounded-lg text-sm text-gray-700">
+                            <strong>Programming Languages & Tools:</strong><br>
+                            • Python (NumPy, Pandas, Scikit-learn, TensorFlow)<br>
+                            • MATLAB/Simulink for system simulation<br>
+                            • R and RStudio for advanced statistical analysis<br>
+                            • C++, Java, JavaScript for software projects<br>
+                            • Complex systems simulation and mathematical modeling<br>
+                            • AI algorithms and machine learning<br>
+                            • Web and mobile application development<br>
+                            • Image processing and computer vision
+                        </div>
+                    </div>
+                    
+                    <div class="luxury-card rounded-3xl p-8 hover-scale border-l-4 border-orange-500">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-pen-fancy text-3xl text-orange-600" aria-hidden="true"></i>
+                            </div>
+                            <button onclick="toggleDetails('writing-en', this)" aria-controls="writing-en" aria-expanded="false" class="bg-orange-500 text-white px-3 py-1 rounded-full text-sm hover:bg-orange-600 transition-colors">
+                                More Details
+                            </button>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800">Scientific Writing & Authoring</h3>
+                        <p class="text-gray-600 leading-relaxed mb-4">Thesis chapters, final reports, scientific articles, and specialized books following international standards</p>
+                        <div id="writing-en" class="hidden bg-orange-50 p-4 rounded-lg text-sm text-gray-700">
+                            <strong>Scientific Writing Types:</strong><br>
+                            • Introduction, problem statement, and research significance<br>
+                            • Comprehensive literature review and background<br>
+                            • Research methodology and study design<br>
+                            • Results analysis and discussion<br>
+                            • Conclusions, recommendations, and limitations<br>
+                            • Abstract in multiple languages with keywords<br>
+                            • ISI and peer-reviewed scientific articles<br>
+                            • Textbook and specialized reference authoring
+                        </div>
+                    </div>
+                    
+                    <div class="luxury-card rounded-3xl p-8 hover-scale border-l-4 border-red-500">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-edit text-3xl text-red-600" aria-hidden="true"></i>
+                            </div>
+                            <button onclick="toggleDetails('editing-en', this)" aria-controls="editing-en" aria-expanded="false" class="bg-red-500 text-white px-3 py-1 rounded-full text-sm hover:bg-red-600 transition-colors">
+                                More Details
+                            </button>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800">Specialized Editing & Formatting</h3>
+                        <p class="text-gray-600 leading-relaxed mb-4">Content and language editing, formatting according to APA, IEEE, Harvard, and other recognized styles</p>
+                        <div id="editing-en" class="hidden bg-red-50 p-4 rounded-lg text-sm text-gray-700">
+                            <strong>Editing Services Include:</strong><br>
+                            • Content and structural editing of texts<br>
+                            • Language, grammar, and spelling editing<br>
+                            • University standard formatting<br>
+                            • Proper reference citation and bibliography<br>
+                            • Table of contents, tables, and figures formatting<br>
+                            • Print and presentation preparation<br>
+                            • Specialized English-Persian translation and vice versa<br>
+                            • Rewriting and text quality improvement
+                        </div>
+                    </div>
+                    
+                    <div class="luxury-card rounded-3xl p-8 hover-scale border-l-4 border-teal-500">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-shield-alt text-3xl text-teal-600" aria-hidden="true"></i>
+                            </div>
+                            <button onclick="toggleDetails('originality-en', this)" aria-controls="originality-en" aria-expanded="false" class="bg-teal-500 text-white px-3 py-1 rounded-full text-sm hover:bg-teal-600 transition-colors">
+                                More Details
+                            </button>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800">Originality Assurance & Quality</h3>
+                        <p class="text-gray-600 leading-relaxed mb-4">Originality checks with certified software, detailed reports, and continuous post-delivery support</p>
+                        <div id="originality-en" class="hidden bg-teal-50 p-4 rounded-lg text-sm text-gray-700">
+                            <strong>Dr. Didgar Research Institute Guarantees:</strong><br>
+                            • Originality check with Turnitin, iThenticate, and other software<br>
+                            • Comprehensive plagiarism reports with precise percentages<br>
+                            • 100% content quality and originality guarantee<br>
+                            • Free 3-month post-delivery support<br>
+                            • Free revisions and modifications when needed<br>
+                            • Complete confidentiality of information and projects<br>
+                            • Money-back guarantee in case of dissatisfaction<br>
+                            • Free consultation throughout all project phases
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section class="py-20 gradient-bg">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl font-bold text-white mb-6">Transparent and Phased Workflow</h2>
+                    <p class="text-xl text-white opacity-90 max-w-3xl mx-auto">
+                        Professional and reliable process of Dr. Didgar Research Institute to ensure quality and success of your project
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
+                    <div class="text-center">
+                        <div class="step-number mx-auto mb-6">1</div>
+                        <h3 class="text-xl font-bold text-white mb-4">Free Consultation</h3>
+                        <p class="text-white opacity-80">Precise needs assessment, academic level determination, and deadline review</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="step-number mx-auto mb-6">2</div>
+                        <h3 class="text-xl font-bold text-white mb-4">Technical Proposal</h3>
+                        <p class="text-white opacity-80">Detailed timeline and transparent quotation</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="step-number mx-auto mb-6">3</div>
+                        <h3 class="text-xl font-bold text-white mb-4">Phased Execution</h3>
+                        <p class="text-white opacity-80">Project completion in phases with interim reports</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="step-number mx-auto mb-6">4</div>
+                        <h3 class="text-xl font-bold text-white mb-4">Review & Control</h3>
+                        <p class="text-white opacity-80">Quality control by specialist team and originality check</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="step-number mx-auto mb-6">5</div>
+                        <h3 class="text-xl font-bold text-white mb-4">Final Delivery</h3>
+                        <p class="text-white opacity-80">Editable files, PDF, and originality report</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl font-bold text-gradient mb-6">Why Dr. Didgar Research Institute?</h2>
+                    <p class="text-xl text-gray-600 max-w-4xl mx-auto">
+                        With over a decade of experience in research and education, we provide the highest quality scientific services
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="slide-in-left">
+                        <div class="luxury-card rounded-3xl p-8">
+                            <h3 class="text-3xl font-bold mb-6 text-gray-800">High Experience & Expertise</h3>
+                            <ul class="space-y-4 text-lg text-gray-600">
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-check-circle text-green-500 mt-1" aria-hidden="true"></i>
+                                    A team of PhD holders with established research experience
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-check-circle text-green-500 mt-1" aria-hidden="true"></i>
+                                    Experience in collaboration with universities and research centers
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-check-circle text-green-500 mt-1" aria-hidden="true"></i>
+                                    Complete commitment to transparency and research ethics
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-check-circle text-green-500 mt-1" aria-hidden="true"></i>
+                                    Expertise in various scientific and technical fields
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="slide-in-right">
+                        <div class="luxury-card rounded-3xl p-8">
+                            <h3 class="text-3xl font-bold mb-6 text-gray-800">Quality & Satisfaction Guarantee</h3>
+                            <ul class="space-y-4 text-lg text-gray-600">
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-star text-yellow-500 mt-1" aria-hidden="true"></i>
+                                    Phased and transparent reports on work progress
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-star text-yellow-500 mt-1" aria-hidden="true"></i>
+                                    Selected and credible work samples in portfolio
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-star text-yellow-500 mt-1" aria-hidden="true"></i>
+                                    Final outputs ready for defense and publication
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-star text-yellow-500 mt-1" aria-hidden="true"></i>
+                                    Continuous support and free consultation
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-20 gradient-bg">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-5xl font-bold text-white mb-8">Ready to Start Collaboration?</h2>
+                <p class="text-2xl text-white opacity-90 mb-12 max-w-3xl mx-auto">
+                    Send your project topic and deadline now — receive a detailed work plan and transparent quote within 24 hours
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                    <a href="https://wa.me/989124067596" target="_blank" rel="noopener noreferrer" class="contact-button px-16 py-6 rounded-full text-white font-bold text-xl hover-scale flex items-center gap-4 pulse-glow">
+                        <i class="fab fa-whatsapp text-3xl" aria-hidden="true"></i>
+                        Start Free Consultation
+                    </a>
+                    <a href="https://t.me/bestprojeh" target="_blank" rel="noopener noreferrer" class="telegram-button px-16 py-6 rounded-full text-white font-bold text-xl hover-scale flex items-center gap-4">
+                        <i class="fab fa-telegram text-3xl" aria-hidden="true"></i>
+                        Quick Connect
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6 text-center">
+            <div class="mb-8">
+                <h3 class="text-2xl font-bold mb-4" id="footer-title">مؤسسۀ پژوهشی دکتر دیدگر</h3>
+                <p class="text-gray-400 mb-6" id="footer-desc">همراهِ علمیِ شما در انجام پروژه‌های دانشگاهی و پژوهشی</p>
+                <div class="flex justify-center gap-6">
+                    <a href="https://wa.me/989124067596" target="_blank" rel="noopener noreferrer" class="text-green-400 hover:text-green-300 text-3xl transition-colors">
+                        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                    </a>
+     
+
+ <a href="https://t.me/bestprojeh" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 text-3xl transition-colors">
+                        <i class="fab fa-telegram" aria-hidden="true"></i>
+                    <a href="https://www.instagram.com/dr.mohsen.didgar" target="_blank" rel="noopener noreferrer" class="text-pink-500 hover:text-pink-400 text-3xl transition-colors">
+    <i class="fab fa-instagram" aria-hidden="true"></i>
+</a>
+
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8">
+                <p class="text-gray-500" id="footer-copyright">© 2024 مؤسسۀ پژوهشی دکتر دیدگر. تمامی حقوق محفوظ است.</p>
+                            </div>
+        </div>
+    </footer>
+
+    <script>
+        
+function switchLanguage(lang) {
+            // Hide all content
+            document.getElementById('fa-content').classList.add('hidden');
+            document.getElementById('ar-content').classList.add('hidden');
+            document.getElementById('en-content').classList.add('hidden');
+            
+            // Remove active state from all buttons
+            document.getElementById('fa-btn').classList.remove('bg-white', 'text-gray-800');
+            document.getElementById('ar-btn').classList.remove('bg-white', 'text-gray-800');
+            document.getElementById('en-btn').classList.remove('bg-white', 'text-gray-800');
+            
+            // Ensure all font classes removed, then add only the needed one
+            function setBodyFontClass(cls) {
+                document.body.classList.remove('font-persian','font-english','font-arabic');
+                document.body.classList.add(cls);
+            }
+            
+            // Show selected content and activate button
+            if (lang === 'fa') {
+                document.getElementById('fa-content').classList.remove('hidden');
+                document.getElementById('fa-btn').classList.add('bg-white', 'text-gray-800');
+                document.documentElement.lang = 'fa';
+                document.documentElement.dir = 'rtl';
+                setBodyFontClass('font-persian');
+                document.title = 'انجام پروژه دانشگاهی و علمی | مؤسسۀ پژوهشی دکتر دیدگر';
+                document.getElementById('footer-title').textContent = 'مؤسسۀ پژوهشی دکتر دیدگر';
+                document.getElementById('footer-desc').textContent = 'همراهِ علمیِ شما در انجام پروژه‌های دانشگاهی و پژوهشی';
+                document.getElementById('footer-copyright').textContent = '© 2024 مؤسسۀ پژوهشی دکتر دیدگر. تمامی حقوق محفوظ است.';
+            } else if (lang === 'ar') {
+                document.getElementById('ar-content').classList.remove('hidden');
+                document.getElementById('ar-btn').classList.add('bg-white', 'text-gray-800');
+                document.documentElement.lang = 'ar';
+                document.documentElement.dir = 'rtl';
+                setBodyFontClass('font-arabic');
+                document.title = 'إنجاز المشاريع الجامعية والعلمية | مؤسسَّة الدكتور ديدگر البحثية';
+                document.getElementById('footer-title').textContent = 'مؤسسَّة الدكتور ديدگر البحثية';
+                document.getElementById('footer-desc').textContent = 'خبراء إنجاز المشاريع الأكاديمية والععلمية';
+                document.getElementById('footer-copyright').textContent = '© 2024 مؤسسَّة الدكتور ديدگر البحثية. جميع الحقوق محفوظة.';
+            } else if (lang === 'en') {
+                document.getElementById('en-content').classList.remove('hidden');
+                document.getElementById('en-btn').classList.add('bg-white', 'text-gray-800');
+                document.documentElement.lang = 'en';
+                document.documentElement.dir = 'ltr';
+                setBodyFontClass('font-english');
+                document.title = 'University & Scientific Project Services | Dr. Didgar Research Institute';
+                document.getElementById('footer-title').textContent = 'Dr. Didgar Research Institute';
+                document.getElementById('footer-desc').textContent = 'Academic & Scientific project support from proposal to publication';
+                document.getElementById('footer-copyright').textContent = '© 2024 Dr. Didgar Research Institute. All rights reserved.';
+            }
+        }
+
+function toggleDetails(id, btn) {
+            // Toggle all elements that accidentally have duplicate IDs (defensive)
+            const elements = document.querySelectorAll('[id="' + id + '"]');
+            elements.forEach(el => {
+                el.classList.toggle('hidden');
+            });
+            if (btn) {
+                const expanded = btn.getAttribute('aria-expanded') === 'true';
+                btn.setAttribute('aria-expanded', String(!expanded));
+            }
+        }
+        // Initialize with Persian
+        document.addEventListener('DOMContentLoaded', function() {
+            switchLanguage('fa');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all cards and sections
+        document.querySelectorAll('.luxury-card, .slide-in-left, .slide-in-right').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+
+<script>
+/* Toggle details accordion (id, button element) */
+function toggleDetails(id, btn){
+    var el = document.getElementById(id);
+    if(!el) return;
+    var expanded = btn.getAttribute('aria-expanded') === 'true';
+    if(expanded){
+        el.classList.add('hidden');
+        btn.setAttribute('aria-expanded','false');
+    } else {
+        el.classList.remove('hidden');
+        btn.setAttribute('aria-expanded','true');
+    }
+}
+
+/* Language switcher: show/hide language blocks */
+function switchLanguage(lang){
+    var langs = ['fa','ar','en'];
+    langs.forEach(function(l){
+        var el = document.getElementById(l + '-content');
+        var btn = document.getElementById(l + '-btn');
+        if(!el || !btn) return;
+        if(l === lang){
+            el.classList.remove('hidden');
+            btn.classList.add('opacity-100');
+            btn.setAttribute('aria-pressed','true');
+        } else {
+            el.classList.add('hidden');
+            btn.classList.remove('opacity-100');
+            btn.setAttribute('aria-pressed','false');
+        }
+    });
+    // set html lang and dir
+    var html = document.documentElement;
+    if(lang === 'fa' || lang === 'ar'){
+        html.lang = (lang === 'fa') ? 'fa' : 'ar';
+        html.dir = 'rtl';
+    } else {
+        html.lang = 'en';
+        html.dir = 'ltr';
+    }
+}
+
+/* Quick contact handler: compose mailto and open (non-blocking) */
+function handleQuickContact(e){
+    e.preventDefault();
+    var form = document.getElementById('quick-contact');
+    if(!form) return false;
+    var name = form.name.value.trim();
+    var contact = form.contact.value.trim();
+    var body = encodeURIComponent('نام: ' + name + '\nتماس: ' + contact + '\nمن از طریق سایت درخواست دادم. لطفاً راهنمایی کنید.');
+    var subject = encodeURIComponent('درخواست تماس از وب‌سایت - ' + name);
+    // prefer opening WhatsApp if available by using wa.me with prefilled text
+    var whatsappNumber = '989124067596';
+    var waLink = 'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent('درخواست تماس: ' + name + ' | ' + contact);
+    // open whatsapp in new tab and fallback to mailto after short timeout
+    window.open(waLink, '_blank');
+    setTimeout(function(){
+        window.location.href = 'mailto:info@didgar.example?subject=' + subject + '&body=' + body;
+    }, 800);
+    return false;
+}
+
+/* ensure default language visible on load */
+document.addEventListener('DOMContentLoaded', function(){
+    // if user has previously selected lang in localStorage, use it
+    var saved = localStorage.getItem('didgar_lang') || 'fa';
+    switchLanguage(saved);
+    // enhance language buttons to store preference
+    var ba = document.querySelectorAll('.lang-switch');
+    ba.forEach(function(b){
+        b.addEventListener('click', function(){
+            var id = this.id || '';
+            if(id.indexOf('-btn')>-1){
+                var lang = id.split('-btn')[0];
+                localStorage.setItem('didgar_lang', lang);
+            }
+        });
+    });
+});
+</script>
+
+
+<script>
+  function toggleReadMore(btn){
+    var more = document.getElementById('more-desc');
+    if(!more) return;
+    if(more.classList.contains('hidden') || more.style.display === 'none'){
+      more.classList.remove('hidden');
+      more.style.display = 'inline';
+      btn.textContent = 'بستن';
+      more.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    } else {
+      more.classList.add('hidden');
+      more.style.display = 'none';
+      btn.textContent = 'بیشتر بخوانید';
+    }
+  }
+</script>
+
+</body>
+</html>
