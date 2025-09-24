@@ -2842,11 +2842,13 @@ function switchLanguage(lang) {
     });
     var activeBtn = document.getElementById(lang + '-btn') || document.querySelector('.lang-switch[data-lang="' + lang + '"]');
     if(activeBtn){
-      try { activeBtn.setAttribute('aria-pressed', 'true'); activeBtn.setAttribute('aria-current', 'true'); activeBtn.focus(); } catch(e){}
+      try { activeBtn.setAttribute('aria-pressed', 'true'); activeBtn.setAttribute('aria-current', 'true'); /* activeBtn.focus() removed to avoid automatic focus on load */
+} catch(e){}
     }
     // move focus to main content if exists
     var mainEl = document.querySelector('main, [role="main"]') || document.querySelector('h1');
-    if(mainEl) try { mainEl.setAttribute('tabindex','-1'); mainEl.focus(); } catch(e){}
+    if(mainEl) try { mainEl.setAttribute('tabindex','-1'); /* mainEl.focus() removed to avoid automatic focus on load */
+} catch(e){}
   } catch(err){}
 
 }
